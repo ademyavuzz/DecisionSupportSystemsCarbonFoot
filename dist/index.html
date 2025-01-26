@@ -1,0 +1,724 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>SmartEco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Adem Yavuz" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script> <!-- chart.js dosyasini import etiik.-->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css"
+      integrity="sha256-tXJfXfp6Ewt1ilPzLDtQnJV4hclT9XuaZUKyUvmyr+Q="
+      crossorigin="anonymous"
+    />
+    <!--end::Fonts-->
+    <!--begin::Third Party Plugin(OverlayScrollbars)-->
+    <link rel="stylesheet" href="/adminlte.css">
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.10.1/styles/overlayscrollbars.min.css"
+      integrity="sha256-tZHrRjVqNSRyWg2wbppGnT833E/Ys0DHWGwT04GiqQg="
+      crossorigin="anonymous"
+    />
+    <!--end::Third Party Plugin(OverlayScrollbars)-->
+    <!--begin::Third Party Plugin(Bootstrap Icons)-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+      integrity="sha256-9kPW/n5nn53j4WMRYAxe9c1rCY96Oogo/MKSVdKzPmI="
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.css"
+      integrity="sha256-4MX+61mt9NVvvuPjUWdUdyfZfxSB1/Rf9WtqRHgG5S0="
+      crossorigin="anonymous"
+    />
+    <!-- jsvectormap -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/css/jsvectormap.min.css"
+      integrity="sha256-+uGLJmmTKOqBr+2E6KDYs/NRsHxSkONXFHUL0fy2O/4="
+      crossorigin="anonymous"
+    />
+  </head>
+  <!--end::Head-->
+  <!--begin::Body-->
+  <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
+    <!--begin::App Wrapper-->
+    <div class="app-wrapper">
+      <!--begin::Header-->
+      <nav class="app-header navbar navbar-expand bg-body">
+        <!--begin::Container-->
+        <div class="container-fluid">
+          <!--begin::Start Navbar Links-->
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" data-lte-toggle="sidebar" href="#" role="button">
+                <i class="bi bi-list"></i>
+              </a>
+            </li>
+            <li class="nav-item d-none d-md-block"><a href="index.html" class="nav-link">Home</a></li>
+          </ul>
+
+        </div>
+        <!--end::Container-->
+      </nav>
+      <!--end::Header-->
+      <!--begin::Sidebar-->
+      <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
+        <!--begin::Sidebar Brand-->
+        <div class="sidebar-brand">
+          <!--begin::Brand Link-->
+          <a href="./index.html" class="brand-link">
+            <span class="brand-text fw-light">SmartEco</span>
+            <!--end::Brand Text-->
+          </a>
+          <!--end::Brand Link-->
+        </div>
+        <!--end::Sidebar Brand-->
+        <!--begin::Sidebar Wrapper-->
+        <div class="sidebar-wrapper">
+          <nav class="mt-2">
+            <!--begin::Sidebar Menu-->
+            <ul
+              class="nav sidebar-menu flex-column"
+              data-lte-toggle="treeview"
+              role="menu"
+              data-accordion="false"
+            >
+              <li class="nav-item menu-open">
+                <a href="/dist/index.html" class="nav-link">
+                  <i class="nav-icon bi bi-speedometer"></i>
+                  <p>
+                    Üretim
+                    <i class="nav-arrow bi bi-chevron"></i>
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/dist/index2.html" class="nav-link"> <!-- Göreceli yol -->
+                  <i class="nav-icon bi bi-table"></i>
+                  <p>
+                    Tables
+                    <i class="nav-arrow bi bi-chevron"></i>
+                  </p>
+                  </a>
+              </li>
+              <li class="nav-item">
+                <a href="/dist/index3.html" class="nav-link">
+                  <i class="nav-icon bi bi-wallet2"></i> <!-- Para simgesi -->
+                  <p>
+                    Gelir
+                    <i class="nav-arrow bi bi-chevron"></i>
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/dist/index4.html" class="nav-link">
+                  <i class="nav-icon bi bi-lightning"></i> <!-- Enerji simgesi -->
+                  <p>
+                    Enerji Tüketimi
+                    <i class="nav-arrow bi bi-chevron"></i>
+                  </p>
+                </a>
+              </li>
+              
+            </ul>
+            <!--end::Sidebar Menu-->
+          </nav>
+        </div>
+        <!--end::Sidebar Wrapper-->
+      </aside>
+      <!--end::Sidebar-->
+      <!--begin::App Main-->
+      <main class="app-main">
+        <!--begin::App Content Header-->
+        <div class="app-content-header">
+          <!--begin::Container-->
+          <div class="container-fluid">
+            <!--begin::Row-->
+            <div class="row">
+              <div class="col-sm-6"><h3 class="mb-0">Üretim</h3></div>
+            </div>
+            <!--end::Row-->
+          </div>
+          <!--end::Container-->
+        </div>
+        <!--end::App Content Header-->
+        <!--begin::App Content-->
+        <div class="app-content">
+          <!--begin::Container-->
+          <div class="container-fluid">
+            <!--begin::Row-->
+            <div class="row">
+              <!--begin::Col-->
+              <div class="col-lg-3 col-6">
+                <!--begin::Small Box Widget 1-->
+                <div class="small-box text-bg-primary">
+                  <div class="inner">
+                    <h3>239170</h3>
+                    <p>TOPLAM ÜRETİM MİKTARI</p>
+                  </div>
+                  <svg class="small-box-icon" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M12 5a1 1 0 011 1v7h7a1 1 0 110 2h-7v7a1 1 0 11-2 0v-7H5a1 1 0 110-2h7V6a1 1 0 011-1z"></path>
+                  </svg>
+                  
+                  
+                  
+                </div>
+                <!--end::Small Box Widget 1-->
+              </div>
+              <!--end::Col-->
+              <div class="col-lg-3 col-6">
+                <!--begin::Small Box Widget 2-->
+                <div class="small-box text-bg-success">
+                  <div class="inner">
+                    <h3>79.8<sup class="fs-5">%</sup></h3>
+                    <p>ÜRETİM VERİMLİĞİ</p>
+                  </div>
+                  <svg
+                    class="small-box-icon"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M18.375 2.25c-1.035 0-1.875.84-1.875 1.875v15.75c0 1.035.84 1.875 1.875 1.875h.75c1.035 0 1.875-.84 1.875-1.875V4.125c0-1.036-.84-1.875-1.875-1.875h-.75zM9.75 8.625c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v11.25c0 1.035-.84 1.875-1.875 1.875h-.75a1.875 1.875 0 01-1.875-1.875V8.625zM3 13.125c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v6.75c0 1.035-.84 1.875-1.875 1.875h-.75A1.875 1.875 0 013 19.875v-6.75z"
+                    ></path>
+                  </svg>
+                </div>
+                <!--end::Small Box Widget 2-->
+              </div>
+              <!--end::Col-->
+              <div class="col-lg-3 col-6">
+                <!--begin::Small Box Widget 3-->
+                <div class="small-box text-bg-warning">
+                  <div class="inner">
+                    <h3>300000</h3>
+                    <p>HEDEFLENEN ÜRETİM</p>
+                  </div>
+                  <svg class="small-box-icon" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M12 2a9.75 9.75 0 10.001 19.5A9.75 9.75 0 0012 2zm0 17.25a7.5 7.5 0 110-15 7.5 7.5 0 010 15zm0-12a4.5 4.5 0 11-.001 9.001A4.5 4.5 0 0112 7.25zm0 7.5a3 3 0 100-6 3 3 0 000 6z"></path>
+                  </svg>
+                  
+                </div>
+                <!--end::Small Box Widget 3-->
+              </div>
+              <!--end::Col-->
+              <div class="col-lg-3 col-6">
+                <!--begin::Small Box Widget 4-->
+                <div class="small-box text-bg-danger">
+                  <div class="inner">
+                    <h3>79.72<sup class="fs-5">%</sup></h3>
+                    <p>HEDEFE ULAŞMA</p>
+                  </div>
+                  <svg
+                    class="small-box-icon"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <path
+                      clip-rule="evenodd"
+                      fill-rule="evenodd"
+                      d="M2.25 13.5a8.25 8.25 0 018.25-8.25.75.75 0 01.75.75v6.75H18a.75.75 0 01.75.75 8.25 8.25 0 01-16.5 0z"
+                    ></path>
+                    <path
+                      clip-rule="evenodd"
+                      fill-rule="evenodd"
+                      d="M12.75 3a.75.75 0 01.75-.75 8.25 8.25 0 018.25 8.25.75.75 0 01-.75.75h-7.5a.75.75 0 01-.75-.75V3z"
+                    ></path>
+                  </svg>
+                </div>
+                <!--end::Small Box Widget 4-->
+              </div>
+              <!--end::Col-->
+            </div>
+            <!--end::Row-->
+            <!--begin::Row-->
+            <div class="charts-container">
+              <!-- Grafik 1 -->
+              <div class="chart-card">
+                  <h3>Üretim Grafiği</h3>
+                  <div class="chart">
+                      <canvas id="productionChart"></canvas>
+                  </div>
+              </div>
+          
+              <!-- Grafik 2 -->
+              <div class="chart-card">
+                  <h3>Pınar Süt Üretim Hattı Verimlilik Grafiği</h3>
+                  <div class="chart">
+                      <canvas id="verimlilikGrafiği"></canvas>
+                  </div>
+              </div>
+          
+              <!-- Grafik 3 -->
+              <div class="chart-card">
+                  <h3>Hedeflenen ve Gerçekleşen Üretim (2024)</h3>
+                  <div class="chart">
+                      <canvas id="productionChart2"></canvas>
+                  </div>
+              </div>
+          
+              <!-- Grafik 4 -->
+              <div class="chart-card">
+                  <h3>Gündüz ve Gece Vardiyası Verimliliği (2024)</h3>
+                  <div class="chart">
+                      <canvas id="shiftGroupedChart"></canvas>
+                  </div>
+              </div>
+          </div>
+          
+            
+          <script>
+              // Üretim Grafiği
+              fetch('http://localhost:3000/api/getProducts')
+                  .then(response => response.json())
+                  .then(data => {
+                      const labels = data.map(item => `${item.yil}-${item.ay < 10 ? '0' + item.ay : item.ay}`).reverse();
+                      const productionValues = data.map(item => item.toplam_uretim).reverse();
+          
+                      const ctx = document.getElementById('productionChart').getContext('2d');
+                      new Chart(ctx, {
+                          type: 'line',
+                          data: {
+                              labels: labels,
+                              datasets: [{
+                                  label: 'Toplam Üretim',
+                                  data: productionValues,
+                                  borderColor: 'rgba(75, 192, 192, 1)',
+                                  backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                  fill: true,
+                                  tension: 0.1,
+                              }]
+                          },
+                          options: {
+                              responsive: true,
+                              maintainAspectRatio: false,
+                              scales: {
+                                  x: {
+                                      beginAtZero: true,
+                                      ticks: {
+                                          autoSkip: true,
+                                          maxRotation: 45,
+                                          minRotation: 0
+                                      }
+                                  }
+                              }
+                          }
+                      });
+                  })
+                  .catch(error => console.error('API verisi alınırken hata oluştu:', error));
+          </script>
+              
+        
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        
+        <script>
+            // 2024 Ocak - Temmuz Verimlilik Verileri (Daha Karışık ve Rastgele Değişim)
+            const verimlilikVerileri = {
+                labels: ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz"],  // Aylar
+                datasets: [
+                    {
+                        label: "H1-Pastörize",  // Üretim Hattı 1
+                        data: [65, 72, 58, 83, 78, 92, 97],  // Rastgele dalgalanan veriler
+                        borderColor: "rgba(75, 192, 192, 1)",  // Çizgi Rengi
+                        backgroundColor: "transparent",  // Arka plan kaldırıldı
+                        fill: false,  // Alanı doldurmadık
+                        tension: 0.0,  // Daha fazla dalgalanma
+                        pointRadius: 3,  // Nokta büyüklüğünü 3 tutuyoruz
+                        borderWidth: 2  // Çizgi kalınlığı
+                    },
+                    {
+                        label: "H2-Yoğurt",  // Üretim Hattı 2
+                        data: [60, 80, 73, 70, 88, 85, 90],  // Rastgele dalgalanan veriler
+                        borderColor: "rgba(153, 102, 255, 1)", // Çizgi Rengi
+                        backgroundColor: "transparent",  // Arka plan kaldırıldı
+                        fill: false,  // Alanı doldurmadık
+                        tension: 0.0,  // Daha fazla dalgalanma
+                        pointRadius: 3,
+                        borderWidth: 2
+                    },
+                    {
+                        label: "H3-Peynir",  // Üretim Hattı 3
+                        data: [67, 73, 82, 75, 80, 92, 91],
+                        borderColor: "rgba(255, 159, 64, 1)",
+                        backgroundColor: "transparent",
+                        fill: false,
+                        tension: 0.0,
+                        pointRadius: 3,
+                        borderWidth: 2
+                    },
+                    {
+                        label: "H4-Ayran",  // Üretim Hattı 4
+                        data: [70, 80, 85, 90, 87, 94, 96],
+                        borderColor: "rgba(255, 99, 132, 1)",
+                        backgroundColor: "transparent",
+                        fill: false,
+                        tension: 0.0,
+                        pointRadius: 3,
+                        borderWidth: 2
+                    },
+                    {
+                        label: "H5-SütTozu",  // Üretim Hattı 5
+                        data: [66, 75, 80, 65, 85, 87, 93],
+                        borderColor: "rgba(54, 162, 235, 1)",
+                        backgroundColor: "transparent",
+                        fill: false,
+                        tension: 0.0,
+                        pointRadius: 3,
+                        borderWidth: 2
+                    },
+                    {
+                        label: "H6-UHT",  // Üretim Hattı 6
+                        data: [65, 79, 83, 70, 88, 91, 97],
+                        borderColor: "rgba(255, 159, 64, 1)",
+                        backgroundColor: "transparent",
+                        fill: false,
+                        tension: 0.0,
+                        pointRadius: 3,
+                        borderWidth: 2
+                    },
+                    {
+                        label: "H7-Kefir",  // Üretim Hattı 7
+                        data: [68, 74, 88, 78, 91, 95, 99],
+                        borderColor: "rgba(75, 192, 192, 1)",
+                        backgroundColor: "transparent",
+                        fill: false,
+                        tension: 0.0,
+                        pointRadius: 3,
+                        borderWidth: 2
+                    },
+                    {
+                        label: "H8-ÇikSüt",  // Üretim Hattı 8
+                        data: [60, 68, 75, 82, 85, 93, 98],
+                        borderColor: "rgba(153, 102, 255, 1)",
+                        backgroundColor: "transparent",
+                        fill: false,
+                        tension: 0.0,
+                        pointRadius: 3,
+                        borderWidth: 2
+                    }
+                ]
+            };
+        
+            // Chart.js Konfigürasyonu
+            const config = {
+                type: 'line',  // Çizgi grafiği
+                data: verimlilikVerileri,
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                font: {
+                                    size: 12,  // Yazı boyutunu küçülttük
+                                    weight: 'normal',  // Yazı kalınlığını normal yaptık
+                                    color: "rgba(0, 0, 0, 0.6)"  // Daha açık renk
+                                }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(tooltipItem) {
+                                    return tooltipItem.dataset.label + ": " + tooltipItem.raw + "%";
+                                }
+                            },
+                            bodyFont: {
+                                size: 12,  // Tooltip yazı boyutu
+                                color: "rgba(0, 0, 0, 0.7)"  // Tooltip yazı rengini yumuşattık
+                            }
+                        }
+                    },
+                    animation: {
+                        duration: 1000,  // Animasyon süresi
+                        easing: 'easeInOutQuad'  // Animasyon yumuşak geçişi
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            title: {
+                                display: true,
+                                text: 'Verimlilik (%)',
+                                font: {
+                                    size: 14,
+                                    weight: 'normal',  // Başlık yazı kalınlığını normal yaptık
+                                    color: "rgba(0, 0, 0, 0.7)"  // Başlık rengini yumuşattık
+                                }
+                            },
+                            grid: {
+                                color: "rgba(0, 0, 0, 0.1)"  // Y ekseni grid çizgileri
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Aylar',
+                                font: {
+                                    size: 14,
+                                    weight: 'normal',  // Başlık yazı kalınlığını normal yaptık
+                                    color: "rgba(0, 0, 0, 0.7)"  // Başlık rengini yumuşattık
+                                }
+                            },
+                            grid: {
+                                color: "rgba(0, 0, 0, 0.1)"  // X ekseni grid çizgileri
+                            }
+                        }
+                    }
+                }
+            };
+        
+            // Grafik Rendering
+            const ctx = document.getElementById('verimlilikGrafiği').getContext('2d');
+            new Chart(ctx, config);
+        </script>
+       
+      <script>
+          // Hedeflenen ve Gerçekleşen Üretim Verileri
+          const productionData = {
+              labels: ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz"], // Aylar
+              datasets: [
+                  {
+                      label: "Hedeflenen Üretim",
+                      data: [52000, 58000, 55000, 60000, 59000, 57000, 54000], // Hedeflenen değerler
+                      borderColor: "rgba(75, 192, 192, 1)",
+                      backgroundColor: "rgba(75, 192, 192, 0.6)", // Çubuk içi rengi
+                      borderWidth: 1
+                  },
+                  {
+                      label: "Gerçekleşen Üretim",
+                      data: [53000, 59000, 56000, 58000, 60000, 55000, 53000], // Gerçekleşen değerler
+                      borderColor: "rgba(255, 99, 132, 1)",
+                      backgroundColor: "rgba(255, 99, 132, 0.6)", // Çubuk içi rengi
+                      borderWidth: 1
+                  }
+              ]
+          };
+      
+          // Chart.js Konfigürasyonu
+          const config2 = {
+              type: 'bar', // Bar Grafiği
+              data: productionData,
+              options: {
+                  responsive: true,
+                  plugins: {
+                      legend: {
+                          position: 'top',
+                          labels: {
+                              font: {
+                                  size: 12,
+                                  weight: 'normal',
+                                  color: "rgba(0, 0, 0, 0.6)"
+                              }
+                          }
+                      },
+                      tooltip: {
+                          callbacks: {
+                              label: function(tooltipItem) {
+                                  return tooltipItem.dataset.label + ": " + tooltipItem.raw + " Üretim";
+                              }
+                          },
+                          bodyFont: {
+                              size: 12,
+                              color: "rgba(0, 0, 0, 0.7)"
+                          }
+                      }
+                  },
+                  animation: {
+                      duration: 1000,
+                      easing: 'easeInOutQuad'
+                  },
+                  scales: {
+                      y: {
+                          beginAtZero: false,
+                          suggestedMin: 50000, // Y eksenini minimum 50,000'e sabitler
+                          suggestedMax: 60000, // Y eksenini maksimum 60,000'e sabitler
+                          title: {
+                              display: true,
+                              text: 'Üretim Miktarı',
+                              font: {
+                                  size: 14,
+                                  color: "rgba(0, 0, 0, 0.7)"
+                              }
+                          },
+                          grid: {
+                              color: "rgba(0, 0, 0, 0.1)"
+                          }
+                      },
+                      x: {
+                          title: {
+                              display: true,
+                              text: 'Aylar',
+                              font: {
+                                  size: 14,
+                                  color: "rgba(0, 0, 0, 0.7)"
+                              }
+                          },
+                          grid: {
+                              color: "rgba(0, 0, 0, 0.1)"
+                          }
+                      }
+                  }
+              }
+          };
+      
+          // Grafik Oluşturma
+          const ctx2 = document.getElementById('productionChart2').getContext('2d');
+          new Chart(ctx2, config2);
+      </script>
+      
+          
+        
+
+
+    
+    <script>
+        // Vardiya Bazında Verimlilik Verileri
+        const groupedBarData = {
+            labels: ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz"], // Aylar
+            datasets: [
+                {
+                    label: "Gündüz Vardiyası",
+                    data: [75, 80, 78, 82, 79, 85, 83], // Gündüz vardiyasının verimliliği (%)
+                    backgroundColor: "rgba(75, 192, 192, 0.8)", // Çubuk içi rengi
+                    borderColor: "rgba(75, 192, 192, 1)",
+                    borderWidth: 1
+                },
+                {
+                    label: "Gece Vardiyası",
+                    data: [65, 70, 68, 62, 67, 72, 69], // Gece vardiyasının verimliliği (%)
+                    backgroundColor: "rgba(255, 99, 132, 0.8)", // Çubuk içi rengi
+                    borderColor: "rgba(255, 99, 132, 1)",
+                    borderWidth: 1
+                }
+            ]
+        };
+    
+        // Chart.js Konfigürasyonu
+        const groupedBarConfig = {
+            type: 'line', // Bar Grafiği
+            data: groupedBarData,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            font: {
+                                size: 12,
+                                weight: 'normal',
+                                color: "rgba(0, 0, 0, 0.7)"
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return tooltipItem.dataset.label + ": " + tooltipItem.raw + "% Verimlilik";
+                            }
+                        },
+                        bodyFont: {
+                            size: 12,
+                            color: "rgba(0, 0, 0, 0.7)"
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100, // Maksimum verimlilik %100
+                        title: {
+                            display: true,
+                            text: 'Verimlilik (%)',
+                            font: {
+                                size: 14,
+                                color: "rgba(0, 0, 0, 0.7)"
+                            }
+                        },
+                        grid: {
+                            color: "rgba(0, 0, 0, 0.1)"
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Aylar',
+                            font: {
+                                size: 14,
+                                color: "rgba(0, 0, 0, 0.7)"
+                            }
+                        },
+                        grid: {
+                            color: "rgba(0, 0, 0, 0.1)"
+                        }
+                    }
+                }
+            }
+        };
+    
+        // Grafik Oluşturma
+        const ctxGrouped = document.getElementById('shiftGroupedChart').getContext('2d');
+        new Chart(ctxGrouped, groupedBarConfig);
+    </script>
+    
+
+
+
+
+
+                
+              
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.10.1/browser/overlayscrollbars.browser.es6.min.js"
+      integrity="sha256-dghWARbRe2eLlIJ56wNB+b760ywulqK3DzZYEpsg2fQ="
+      crossorigin="anonymous" defer
+    ></script>
+    <!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Required Plugin(popperjs for Bootstrap 5)-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous" defer
+    ></script>
+    <!--end::Required Plugin(popperjs for Bootstrap 5)--><!--begin::Required Plugin(Bootstrap 5)-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+      integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+      crossorigin="anonymous" defer
+    ></script>
+    <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
+
+
+    <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"
+      integrity="sha256-ipiJrswvAR4VAx/th+6zWsdeYmVae0iJuiR+6OqHJHQ="
+      crossorigin="anonymous" defer
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.min.js"
+      integrity="sha256-+vh8GkaU7C9/wbSLIcwq82tQ2wTf44aOHA8HlBMwRI8="
+      crossorigin="anonymous" defer
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/js/jsvectormap.min.js"
+      integrity="sha256-/t1nN2956BT869E6H4V1dnt0X5pAQHPytli+1nTZm2Y="
+      crossorigin="anonymous" defer
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/maps/world.js"
+      integrity="sha256-XPpPaZlU8S/HWf7FZLAncLg2SAkP8ScUTII89x9D3lY="
+      crossorigin="anonymous" defer
+    ></script>
+  </body>
+</html>

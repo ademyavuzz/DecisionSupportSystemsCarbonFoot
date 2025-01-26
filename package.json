@@ -1,0 +1,23 @@
+{
+  "name": "kds",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chart": "^0.1.2",
+    "chart.js": "^4.4.7",
+    "express": "^4.21.2",
+    "js": "^0.1.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.12.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  },
+  "description": ""
+}
